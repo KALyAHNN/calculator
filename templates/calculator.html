@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block header %}
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <h3><b>Hello, {{ name }}...</b></h3>
+        <h4><b>Welcome</b></h4>
+    </div>
+{% endblock %}
+{% block main %}
+    <form action="/calculate" method="post">
+        <br>
+        <table id="calcu">
+            <tr>
+                <td colspan="4">
+                    <input type="text" name="expression" id="expression" oninput="scrollExpression()" readonly>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="button" id="ce" value="CE" onclick="clearExpression()"></td>
+                <td><input type="button" value="←" onclick="backspace()"></td>
+                <td><input type="button" value="/" onclick="appendToExpression('/')"></td>
+                <td><input type="button" value="x" onclick="appendToExpression('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="appendToExpression('7')"></td>
+                <td><input type="button" value="8" onclick="appendToExpression('8')"></td>
+                <td><input type="button" value="9" onclick="appendToExpression('9')"></td>
+                <td><input type="button" value="-" onclick="appendToExpression('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="appendToExpression('4')"></td>
+                <td><input type="button" value="5" onclick="appendToExpression('5')"></td>
+                <td><input type="button" value="6" onclick="appendToExpression('6')"></td>
+                <td><input type="button" value="+" onclick="appendToExpression('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="appendToExpression('1')"></td>
+                <td><input type="button" value="2" onclick="appendToExpression('2')"></td>
+                <td><input type="button" value="3" onclick="appendToExpression('3')"></td>
+                <td rowspan="2"><input type="button" id="eq" value="=" onclick="calculate()"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="0" onclick="appendToExpression('0')"></td>
+                <td><input type="button" value="." onclick="appendToExpression('.')"></td>
+            </tr>
+        </table>
+        <br>
+    </form>
+{% endblock %}
+
+{% block link %}
+    <form action="/homepage" , method="post">
+        <button type="submit" class="btn btn-secondary">Go to homepage</button>
+{% endblock %}
